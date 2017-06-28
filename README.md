@@ -3,6 +3,8 @@
 Controle de ficha pessoal usando blockchain
 
 Configure seu blockchain usando Multichain com Vagrant.
+[Vagrant]: https://www.vagrantup.com/
+[Multichain]: http://www.multichain.com/
 
 * Acesse a pasta servidor e via terminal crie a máquina virtual do servidor e acesse usando os comandos abaixo:
 
@@ -62,7 +64,32 @@ Configure seu blockchain usando Multichain com Vagrant.
             "relayfee" : 0.00000000,
             "errors" : ""
         }
+# Criando e recuperando os dados no blockchain
 
+Obs.: Todos os valores informados são em hexadecimal, exceto a chave da ficha, que nesse exemplo é o CPF, nossa chave de recuperação dos dados.
 
-[Vagrant]: https://www.vagrantup.com/
-[Multichain]: http://www.multichain.com/
+CPF de exemplo: 123456789-10
+
+Cria um registro para o cpf informado:
+
+        $ create stream 12345678910 true
+        
+Atribui um valor para o campo nome da ficha com o cpf informado:
+        
+        $ publish 12345678910 nome 416e646572736f6e204a6566666572736f6e20436572717565697261
+        
+Lista todos os registros de todas as pessoas que constam no blockchain:
+        
+        $ liststreams
+        
+Lista todos os itens do cpf informado:
+        
+        $ liststreamitems 12345678910
+        
+Cria um campo endereço com um valor para o cpf informado:
+        
+        $ publish 12345678910 endereco 505043412d554e42
+        
+Lista o campo nome do cpf informado:
+        
+        $ liststreamkeyitems 12345678910 nome
