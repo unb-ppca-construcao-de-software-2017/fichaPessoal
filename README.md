@@ -2,11 +2,7 @@
 
 Controle de ficha pessoal usando blockchain
 
-Configure seu blockchain usando Multichain com Vagrant.
-
-[Vagrant]: https://www.vagrantup.com/
-
-[Multichain]: http://www.multichain.com/
+Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Vagrant](https://www.vagrantup.com/)
 
 * Acesse a pasta servidor e via terminal crie a máquina virtual do servidor e acesse usando os comandos abaixo:
 
