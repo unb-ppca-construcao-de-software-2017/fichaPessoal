@@ -1,6 +1,35 @@
-# Multichain
+* Projeto criado devido a sugestão de utilização da tecnologia blockchain na disciplina de Construção de Software do Mestrado da UNB.
 
-Controle de ficha pessoal usando blockchain
+# Blockchain
+
+## Órgão
+
+PMDF
+
+## Problema
+
+Controle das fichas pessoais e criminais de todos os cidadãos.
+
+## Soluções já utilizadas
+
+Cada órgão de segurança pública, assim como várias unidades dentro da própria PMDF possuem dados diferentes das pessoas. Alguns possuem foto, outros possuem o endereço desatualizado, outros possuem RG, assim como os dados criminais também podem não ser compartilhados entre os estados do Brasil.
+
+Devido a esse problema, o Ministério da Justiça, criou o sistema Infoseg, com a proposta de integrar os dados de várias bases de dados, como: Receita Federal, Detran’s, Tribunais de Justiça dos Estados dentre outros, porém o sistema continua sendo ineficiente, pois depende da “boa vontade” das instituições com a atualização dos dados, disponibilidade dos serviços web e firmarem e atualizarem os convênios entre as instituições.
+
+Como resultado, frequentemente o sistema fica indisponível para algumas funcionalidades, algumas funções deixam de funcionar por falta de atualização do convênio e alguns dados continuam desatualizados porque não são confrontados entre as diferentes bases de dados.
+
+Além de todas essas características, existe o risco de dados pessoais e criminais simplesmente sumirem!
+
+## Por que usar o blockchain?
+
+Devido ao blockchain ser imutável, irrefutável e auditável, essa tecnologia será muito muito útil para o desenvolvimento desse controle de ficha pessoal e criminal, pois os dados serão sempre atualizados e os dados anteriores não serão perdidos, o sistema estará sempre disponível, pois existirão vários nós na rede.
+
+Apesar de ser uma rede privada, será uma rede muito grande, pois todos os policiais de todos os estados podem ter acesso a esses dados e os dados de instituições diferentes seriam compartilhados em uma base única, além de que não teria o problema de dados sumirem devido a validação que é feita por todos os nós da rede e rastreado para identificar quem os modificou.
+
+
+# Proposta de solução do problema
+
+Controle de ficha pessoal e criminal usando blockchain
 
 Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Vagrant](https://www.vagrantup.com/)
 
@@ -91,3 +120,7 @@ CPF de exemplo: 123456789-10
 * Lista o campo nome do cpf informado:
         
         $ liststreamkeyitems 12345678910 nome
+
+## Conclusão do MVP (Minimum Viable Product)
+
+* Pode-se verificar que com o uso de blockchain, nesse exemplo utilizando a biblioteca multichain, será viável criar um controle de ficha pessoal que pode ser utilizado a princípio dentro da PMDF e futuramente ser disseminado para os outros órgãos de segurança pública, tornando assim a rede mais forte e os dados confiáveis.
