@@ -33,6 +33,11 @@ Controle de ficha pessoal e criminal usando blockchain
 
 Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Vagrant](https://www.vagrantup.com/)
 
+* Clone o repositório usando os comandos abaixo:
+
+        $ git clone https://github.com/unb-ppca-construcao-de-software-2017/fichaPessoal.git
+        $ cd fichaPessoal
+
 * Acesse a pasta servidor e via terminal crie a máquina virtual do servidor e acesse usando os comandos abaixo:
 
         $ vagrant up
