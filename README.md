@@ -40,11 +40,13 @@ Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Va
 
 * Acesse a pasta servidor e via terminal crie a máquina virtual do servidor e acesse usando os comandos abaixo:
 
+        $ cd servidor
         $ vagrant up
         $ vagrant ssh
 
-* Acesse a pasta cliente e via terminal crie a máquina virtual do cliente e acesse usando os comandos abaixo:
+* Acesse a pasta cliente em outro terminal crie a máquina virtual do cliente e acesse usando os comandos abaixo:
 
+        $ cd cliente
         $ vagrant up
         $ vagrant ssh
 
