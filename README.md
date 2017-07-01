@@ -64,7 +64,9 @@ Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Va
 
 * Dentro da VM do servidor, adicione as permissões de conexão:
 
-        $ multichain-cli fichaPessoal grant 1F6km6qxta5p5gqtFF3XMCspKT1cCsDDeCADuS connect,send,receive
+        $ multichain-cli fichaPessoal grant <CHAVE_DO_CLIENTE> connect,send,receive
+        
+        Exemplo de comando com a chave do cliente: permissao-ficha 1F6km6qxta5p5gqtFF3XMCspKT1cCsDDeCADuS
 
 * Dentro do servidor do cliente, tente conectar novamente:
 
@@ -115,6 +117,7 @@ CPF de exemplo: 123456789-10
 * Lista todos os registros de todas as pessoas que constam no blockchain:
         
         $ liststreams
+        $ subscribe 12345678910
         
 * Lista todos os itens do cpf informado:
         
@@ -123,10 +126,20 @@ CPF de exemplo: 123456789-10
 * Cria um campo endereço com um valor para o cpf informado:
         
         $ publish 12345678910 endereco 505043412d554e42
+        $ subscribe 12345678910
         
 * Lista o campo nome do cpf informado:
         
         $ liststreamkeyitems 12345678910 nome
+        
+* Conceda as permissões para outros nós fazerem inclusões e recuperações na ficha:
+
+        $ grant <CHAVE_DO_CLIENTE> receive,send
+        $ grant <CHAVE_DO_CLIENTE> 12345678910.write
+
+Acesse na VM do cliente:
+
+	$ liststreamitems 12345678910
 
 ## Conclusão do MVP (Minimum Viable Product)
 
