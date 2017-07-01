@@ -18,8 +18,13 @@ Vagrant.configure(2) do |config|
     vb.name = "servidor"
   end
 
+  config.vm.provision "file", source: "./exec-ficha/acessar-ficha", destination: "./exec-ficha/acessar-ficha"
+    config.vm.provision "file", source: "./exec-ficha/criar-estrutura-ficha", destination: "./exec-ficha/criar-estrutura-ficha"
+  config.vm.provision "file", source: "./exec-ficha/conectar-ficha", destination: "./exec-ficha/conectar-ficha"
+config.vm.provision "file", source: "./exec-ficha/permissao-ficha", destination: "./exec-ficha/permissao-ficha"
   config.vm.provision "shell", :inline => "wget http://www.multichain.com/download/multichain-1.0-beta-2.tar.gz"
   config.vm.provision "shell", :inline => "tar -xvzf multichain-1.0-beta-2.tar.gz"
   config.vm.provision "shell", :inline => "cd multichain-1.0-beta-2 && mv multichaind multichain-cli multichain-util /usr/local/bin"
-  config.vm.provision "shell", :inline => "multichain-util create fichaPessoal"
+  config.vm.provision "shell", :inline => "mv exec-ficha/* /usr/local/bin"
+  config.vm.provision "shell", :inline => "sudo chmod +x acessar-ficha criar-estrutura-ficha conectar-ficha permissao-ficha"
 end

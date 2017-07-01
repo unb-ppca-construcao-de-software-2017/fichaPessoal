@@ -43,6 +43,11 @@ Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Va
         $ cd servidor
         $ vagrant up
         $ vagrant ssh
+        
+* Conceda permissões aos arquivos do servidor:
+        
+        $ cd /usr/local/bin
+        $ sudo chmod +x acessar-ficha conectar-ficha criar-estrutura-ficha permissao-ficha
 
 * Acesse a pasta cliente em outro terminal crie a máquina virtual do cliente e acesse usando os comandos abaixo:
 
@@ -50,57 +55,38 @@ Configure seu blockchain usando [Multichain](http://www.multichain.com/) com [Va
         $ vagrant up
         $ vagrant ssh
 
-* Dentro da VM do servidor, crie o blockchain:
+* Conceda permissões aos arquivos do cliente:
+        
+        $ cd /usr/local/bin
+        $ sudo chmod +x acessar-ficha criar-ficha lista-fichas conectar-ficha inserir-nome-ficha
 
-        $ multichain-util create fichaPessoal
+* Dentro da VM do servidor, crie e inicialize o blockchain usando o comando abaixo:
 
-* Dentro da VM do servidor inicialize o blockchain:
-
-        $ multichaind fichaPessoal -daemon
+        $ criar-estrutura-ficha
 
 * Dentro da VM do cliente acesse o blockchain do servidor:
 
-        $ multichaind fichaPessoal@10.4.4.4:4401 -daemon
+        $ conectar-ficha
 
 * Dentro da VM do servidor, adicione as permissões de conexão:
 
-        $ multichain-cli fichaPessoal grant 1F6km6qxta5p5gqtFF3XMCspKT1cCsDDeCADuS connect,send,receive
+        $ permissao-ficha <CHAVE_DO_CLIENTE>
+        
+        Exemplo de comando com a chave do cliente: permissao-ficha 1F6km6qxta5p5gqtFF3XMCspKT1cCsDDeCADuS
 
 * Dentro do servidor do cliente, tente conectar novamente:
 
-        $ multichaind fichaPessoal@10.4.4.4:4401 -daemon
+        $ conectar-ficha
 
 * Acesse o modo interativo do blockchain fichaPessoal:
 
-        $ multichain-cli fichaPessoal
-        fichaPessoal: getinfo
-        {
-            "version" : "1.0 alpha 16",
-            "protocolversion" : 10003,
-            "chainname" : "fichaPessoal",
-            "description" : "MultiChain fichaPessoal",
-            "protocol" : "multichain",
-            "port" : 4401,
-            "setupblocks" : 60,
-            "nodeaddress" : "fichaPessoal@192.1.2.46:4401",
-            "burnaddress" : "1XXXXXXWsXXXXXXXRXXXXXXXZxXXXXXXat6JD4",
-            "walletversion" : 60000,
-            "balance" : 0.00000000,
-            "blocks" : 55,
-            "timeoffset" : 0,
-            "connections" : 2,
-            "proxy" : "",
-            "difficulty" : 0.00001526,
-            "testnet" : false,
-            "keypoololdest" : 1457004398,
-            "keypoolsize" : 2,
-            "paytxfee" : 0.00000000,
-            "relayfee" : 0.00000000,
-            "errors" : ""
-        }
+        $ acessar-ficha
+        
 # Criando e recuperando os dados no blockchain
 
 Obs.: Todos os valores informados são em hexadecimal, exceto a chave da ficha, que nesse exemplo é o CPF, nossa chave de recuperação dos dados.
+
+Acesse na VM do servidor:
 
 CPF de exemplo: 123456789-10
 
@@ -115,6 +101,7 @@ CPF de exemplo: 123456789-10
 * Lista todos os registros de todas as pessoas que constam no blockchain:
         
         $ liststreams
+        $ subscribe 12345678910
         
 * Lista todos os itens do cpf informado:
         
@@ -123,10 +110,22 @@ CPF de exemplo: 123456789-10
 * Cria um campo endereço com um valor para o cpf informado:
         
         $ publish 12345678910 endereco 505043412d554e42
+        $ subscribe 12345678910
         
 * Lista o campo nome do cpf informado:
         
         $ liststreamkeyitems 12345678910 nome
+
+* Conceda as permissões para outros nós fazerem inclusões na ficha:
+
+        $ grant <CHAVE_DO_CLIENTE> receive,send
+        $ grant <CHAVE_DO_CLIENTE> 12345678910.write
+
+Acesse na VM do cliente:
+
+		$ liststreamitems 12345678910
+
+Obs.: Após receber as permissões, os outros nós também podem fazer inclusões
 
 ## Conclusão do MVP (Minimum Viable Product)
 
